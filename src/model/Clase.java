@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Clase {
-    private int idClase;
-    private String nombreActividad;
-    private String horario;
-    private int cupoMaximo;
-    private Entrenador entrenadorAsignado;
-    private List<Socio> listaSocios;
+    private final int idClase;
+    private final String nombreActividad;
+    private final String horario;
+    private final int cupoMaximo;
+    private final Entrenador entrenadorAsignado;
+    private final List<Socio> listaSocios;
 
     public Clase(int idClase, String nombreActividad, String horario, int cupoMaximo, Entrenador entrenadorAsignado) {
         this.idClase = idClase;
@@ -38,7 +38,7 @@ public class Clase {
         System.out.println("Clase: " + nombreActividad);
         System.out.println("Horario: " + horario);
         System.out.println("Cupo máximo: " + cupoMaximo);
-        System.out.println(new StringBuilder().append("Entrenador: ").append(entrenadorAsignado.getNombre()).toString());
+        System.out.println("Entrenador: " + entrenadorAsignado.getNombre());
         System.out.println("Socios inscritos:");
         for (Socio s : listaSocios) {
             System.out.println("- " + s.getNombre() + " " + s.getApellido());
