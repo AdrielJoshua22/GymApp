@@ -38,7 +38,7 @@ public class Clase {
         System.out.println("Clase: " + nombreActividad);
         System.out.println("Horario: " + horario);
         System.out.println("Cupo máximo: " + cupoMaximo);
-        System.out.println("Entrenador: " + entrenadorAsignado.getNombre());
+        System.out.println(new StringBuilder().append("Entrenador: ").append(entrenadorAsignado.getNombre()).toString());
         System.out.println("Socios inscritos:");
         for (Socio s : listaSocios) {
             System.out.println("- " + s.getNombre() + " " + s.getApellido());
