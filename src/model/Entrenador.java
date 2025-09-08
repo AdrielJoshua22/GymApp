@@ -15,7 +15,7 @@ public class Entrenador {
 
     public void asignarClase(String nombreClase) {
         System.out.println("Entrenador " + nombre + " ha sido asignado a la clase: " + nombreClase);
-        // Más adelante se puede vincular con la clase Clase
+       
     }
 
     public void consultarDisponibilidad() {
@@ -29,4 +29,11 @@ public class Entrenador {
     }
 
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }
