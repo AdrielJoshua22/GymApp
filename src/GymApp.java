@@ -1,5 +1,7 @@
+import model.Pagos;
 import model.Socio;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class GymApp {
@@ -34,6 +36,8 @@ public class GymApp {
         System.out.println("model.Socio 2 ");
         System.out.println(Socio2);
 
+        Pagos pago1 = new Pagos(1, 101, 5000, LocalDate.now(), true);
+        pago1.registrarPago();
     }
 
     }
