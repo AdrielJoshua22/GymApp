@@ -28,6 +28,21 @@ public class Pagos {
         System.out.println("Estado: " + (estado ? "Activo" : "Inactivo"));
     }
 
+    public String consultarEstado() {
+        return estado ? "✅ El pago está activo." : "❌ El pago está inactivo.";
+    }
+
+    public String generarComprobante() {
+        return "🧾 COMPROBANTE DE PAGO\n" +
+                "--------------------------\n" +
+                "ID Pago: " + idPago + "\n" +
+                "ID Socio: " + idSocio + "\n" +
+                "Monto: $" + monto + "\n" +
+                "Fecha: " + fecha + "\n" +
+                "Estado: " + (estado ? "Activo" : "Inactivo") + "\n" +
+                "--------------------------";
+    }
+
 }
 
 
