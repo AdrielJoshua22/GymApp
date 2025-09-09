@@ -1,7 +1,5 @@
 package model;
-
 import java.time.LocalDate;
-
 
 public class Pagos {
     private final int idPago;
@@ -16,7 +14,6 @@ public class Pagos {
         this.monto = monto;
         this.fecha = fecha;
         this.estado = estado;
-
     }
 
     public void registrarPago() {
@@ -29,11 +26,11 @@ public class Pagos {
     }
 
     public String consultarEstado() {
-        return estado ? "✅ El pago está activo." : "❌ El pago está inactivo.";
+        return estado ? "El pago está activo." : "El pago está inactivo.";
     }
 
     public String generarComprobante() {
-        return "🧾 COMPROBANTE DE PAGO\n" +
+        return " COMPROBANTE DE PAGO\n" +
                 "--------------------------\n" +
                 "ID Pago: " + idPago + "\n" +
                 "ID Socio: " + idSocio + "\n" +
