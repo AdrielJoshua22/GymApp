@@ -1,10 +1,10 @@
 package model;
 
 public class Entrenador {
-    private int idEntrenador;
+    private final int idEntrenador;
     private String nombre;
-    private String especialidad;
-    private String horarioDisponible;
+    private final String especialidad;
+    private final String horarioDisponible;
 
     public Entrenador(int idEntrenador, String nombre, String especialidad, String horarioDisponible) {
         this.idEntrenador = idEntrenador;
@@ -19,7 +19,7 @@ public class Entrenador {
     }
 
     public void consultarDisponibilidad() {
-        System.out.println("Entrenador " + nombre + " está disponible en: " + horarioDisponible);
+        System.out.println("Entrenador " + nombre + " está disponible en: " + horarioDisponible + "   hora");
     }
 
     @Override

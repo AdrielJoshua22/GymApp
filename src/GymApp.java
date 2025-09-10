@@ -1,7 +1,4 @@
-import manager.EntrenadorManager;
-import manager.PagosManager;
-import manager.RutinaManager;
-import manager.SocioManager;
+import manager.*;
 
 import java.util.Scanner;
 
@@ -16,6 +13,7 @@ public class GymApp {
             System.out.println("2. Gestión de Rutinas");
             System.out.println("3. Gestión de Pagos");
             System.out.println("4. Gestión de Entrenadores");
+            System.out.println("5. Gestión de Clases");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
