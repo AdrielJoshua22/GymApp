@@ -1,53 +1,48 @@
-import model.Pagos;
-import model.Rutina;
-import model.Socio;
+import manager.EntrenadorManager;
+import manager.PagosManager;
+import manager.RutinaManager;
+import manager.SocioManager;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class GymApp {
-
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
 
-        Scanner tdo = new Scanner(System.in);
-        String nombre, apellido;
-        int edad, dni, idSocio;
-        boolean activo;
+        do {
+            System.out.println("\n=== GYMAPP - MENÚ PRINCIPAL ===");
+            System.out.println("1. Gestión de Socios");
+            System.out.println("2. Gestión de Rutinas");
+            System.out.println("3. Gestión de Pagos");
+            System.out.println("4. Gestión de Entrenadores");
+            System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // limpiar buffer
 
-        Socio Socio1 = new Socio(1, "Joshua", "Amengual", 37304055, 32, true);
+            switch (opcion) {
+                case 1:
+                    SocioManager.mostrarMenu(scanner);
+                    break;
+                case 2:
+                    RutinaManager.mostrarMenu(scanner);
+                    break;
+                case 3:
+                    PagosManager.mostrarMenu(scanner);
+                    break;
+                case 4:
+                    EntrenadorManager.mostrarMenu(scanner);
+                    break;
 
-        // System.out.println("Introduzca IdSocio");
-        //idSocio = tdo.nextInt();
-        //System.out.println("Introduzca nombre");
-        //nombre = tdo.next();
-        //System.out.println("Introduzca apellido");
-        //apellido = tdo.next();
-        //System.out.println("Introduzca DNI");
-        //dni = tdo.nextInt();
-        //System.out.println("Introduzca edad");
-        //edad = tdo.nextInt();
-        //System.out.println("Introduzca el pago");
-        //activo = tdo.nextBoolean();
+                case 0:
+                    System.out.println("👋 ¡Gracias por usar GymApp!");
+                    break;
+                default:
+                    System.out.println("❌ Opción inválida.");
+            }
+        } while (opcion != 0);
 
-        //Socio Socio2 = new Socio(idSocio, nombre, apellido, dni, edad, activo);
-
-        System.out.println("model.Socio 1 ");
-        System.out.println(Socio1);
-
-        //System.out.println("model.Socio 2 ");
-        //System.out.println(Socio2);
-
-        Pagos pago1 = new Pagos(1, 101, 5000, LocalDate.now(), true);
-        pago1.registrarPago();
-
-        Pagos pago2 = new Pagos(1, 101, 5000, LocalDate.now(), true);
-        pago1.consultarEstado();
-
-        Pagos pago3 = new Pagos(1, 101, 5000, LocalDate.now(), true);
-        System.out.println(pago1.generarComprobante());
-
-        Rutina rutina1 = new Rutina(1, 2, "Ganar Musculo", "Entrenamiento Pesado", "pecho", "banco plano", 1);
-        rutina1.mostrarRutina();
+        scanner.close();
     }
-
-    }
+}
