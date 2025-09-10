@@ -1,4 +1,5 @@
 import model.Pagos;
+import model.Rutina;
 import model.Socio;
 
 import java.time.LocalDate;
@@ -45,8 +46,8 @@ public class GymApp {
         Pagos pago3 = new Pagos(1, 101, 5000, LocalDate.now(), true);
         System.out.println(pago1.generarComprobante());
 
-
-
+        Rutina rutina1 = new Rutina(1, 2, "Ganar Musculo", "Entrenamiento Pesado", "pecho", "banco plano", 1);
+        rutina1.mostrarRutina();
     }
 
     }
