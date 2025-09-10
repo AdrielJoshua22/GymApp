@@ -34,7 +34,9 @@ public class GymApp {
                 case 4:
                     EntrenadorManager.mostrarMenu(scanner);
                     break;
-
+                case 5:
+                    ClaseManager.mostrarMenu(scanner);
+                    break;
                 case 0:
                     System.out.println("¡Gracias por usar GymApp!");
                     break;
