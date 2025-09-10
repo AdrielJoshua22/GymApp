@@ -31,10 +31,10 @@ public class PagosManager {
                     generarComprobante();
                     break;
                 case 0:
-                    System.out.println("↩️ Volviendo al menú principal...");
+                    System.out.println("↩Volviendo al menú principal...");
                     break;
                 default:
-                    System.out.println("❌ Opción inválida.");
+                    System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
@@ -58,9 +58,9 @@ public class PagosManager {
 
     private static void consultarEstado() {
         if (pagoActual != null) {
-            System.out.println("📌 Estado del pago: " + pagoActual.consultarEstado());
+            System.out.println("Estado del pago: " + pagoActual.consultarEstado());
         } else {
-            System.out.println("⚠️ No hay pago registrado.");
+            System.out.println("No hay pago registrado.");
         }
     }
 
@@ -68,7 +68,7 @@ public class PagosManager {
         if (pagoActual != null) {
             System.out.println(pagoActual.generarComprobante());
         } else {
-            System.out.println("⚠️ No hay pago registrado.");
+            System.out.println("No hay pago registrado.");
         }
     }
 }

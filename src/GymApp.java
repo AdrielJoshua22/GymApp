@@ -36,10 +36,10 @@ public class GymApp {
                     break;
 
                 case 0:
-                    System.out.println("👋 ¡Gracias por usar GymApp!");
+                    System.out.println("¡Gracias por usar GymApp!");
                     break;
                 default:
-                    System.out.println("❌ Opción inválida.");
+                    System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
 

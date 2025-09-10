@@ -34,10 +34,10 @@ public class EntrenadorManager {
                     mostrarDatos();
                     break;
                 case 0:
-                    System.out.println("↩️ Volviendo al menú principal...");
+                    System.out.println("↩Volviendo al menú principal...");
                     break;
                 default:
-                    System.out.println("❌ Opción inválida.");
+                    System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
@@ -54,14 +54,14 @@ public class EntrenadorManager {
         String horario = scanner.nextLine();
 
         entrenadorActual = new Entrenador(id, nombre, especialidad, horario);
-        System.out.println("✅ Entrenador creado.");
+        System.out.println("Entrenador creado.");
     }
 
     private static void consultarDisponibilidad() {
         if (entrenadorActual != null) {
             entrenadorActual.consultarDisponibilidad();
         } else {
-            System.out.println("⚠️ No hay entrenador registrado.");
+            System.out.println("No hay entrenador registrado.");
         }
     }
 
@@ -71,7 +71,7 @@ public class EntrenadorManager {
             String clase = scanner.nextLine();
             entrenadorActual.asignarClase(clase);
         } else {
-            System.out.println("⚠️ No hay entrenador registrado.");
+            System.out.println("No hay entrenador registrado.");
         }
     }
 
@@ -79,7 +79,7 @@ public class EntrenadorManager {
         if (entrenadorActual != null) {
             System.out.println(entrenadorActual);
         } else {
-            System.out.println("⚠️ No hay entrenador registrado.");
+            System.out.println("No hay entrenador registrado.");
         }
     }
 }

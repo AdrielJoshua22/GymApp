@@ -38,10 +38,10 @@ public class SocioManager {
                     darDeBaja();
                     break;
                 case 0:
-                    System.out.println("↩️ Volviendo al menú principal...");
+                    System.out.println("Volviendo al menú principal...");
                     break;
                 default:
-                    System.out.println("❌ Opción inválida.");
+                    System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
@@ -60,7 +60,7 @@ public class SocioManager {
         int edad = scanner.nextInt();
         scanner.nextLine();
         socioActual = new Socio(id, nombre, apellido, dni, edad, true);
-        System.out.println("✅ Socio creado.");
+        System.out.println("Socio creado.");
     }
 
     private static void modificarSocio(Scanner scanner) {
@@ -73,9 +73,9 @@ public class SocioManager {
             int edad = scanner.nextInt();
             scanner.nextLine();
             socioActual.modificarDatos(nombre, apellido, edad);
-            System.out.println("✅ Datos modificados.");
+            System.out.println("Datos modificados.");
         } else {
-            System.out.println("⚠️ No hay socio creado.");
+            System.out.println("No hay socio creado.");
         }
     }
 
@@ -83,7 +83,7 @@ public class SocioManager {
         if (socioActual != null) {
             socioActual.consultarClases();
         } else {
-            System.out.println("⚠️ No hay socio creado.");
+            System.out.println("No hay socio creado.");
         }
     }
 
@@ -91,16 +91,16 @@ public class SocioManager {
         if (socioActual != null) {
             System.out.println(socioActual);
         } else {
-            System.out.println("⚠️ No hay socio creado.");
+            System.out.println("No hay socio creado.");
         }
     }
 
     private static void darDeBaja() {
         if (socioActual != null) {
             socioActual.darBaja();
-            System.out.println("⚠️ Socio dado de baja.");
+            System.out.println("Socio dado de baja.");
         } else {
-            System.out.println("⚠️ No hay socio creado.");
+            System.out.println("No hay socio creado.");
         }
     }
 }
