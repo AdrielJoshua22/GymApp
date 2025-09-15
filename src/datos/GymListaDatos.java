@@ -20,9 +20,9 @@ public class GymListaDatos {
             PagosManager pagosManager
     ) {
         // Socios
-        socioManager.agregarSocio(new Socio(1, "Lucía Gómez", "lucia@gmail.com", 28, 12345678, true));
-        socioManager.agregarSocio(new Socio(2, "Martín Pérez", "martin@gmail.com", 35, 87654321, true));
-        socioManager.agregarSocio(new Socio(3, "Sofía Ramírez", "sofia@gmail.com", 22, 11223344, true));
+        socioManager.agregarSocio(new Socio(1, "Lucía", "Gomez", 28555789, 37, true));
+        socioManager.agregarSocio(new Socio(2, "Martín ", "Perez", 27889707, 38, true));
+        socioManager.agregarSocio(new Socio(3, "Sofía ", "Blanco", 37333999, 32, true));
 
         // Entrenadores
         entrenadorManager.agregarEntrenador(new Entrenador(101, "Carla Ruiz", "Funcional", "Turno Mañana"));

@@ -8,13 +8,13 @@ public class Socio {
     private int edad;
     private boolean activo;
 
-    public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean b) {
+    public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo) {
         this.idSocio = idSocio;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.edad = edad;
-        this.activo = true;
+        this.activo = activo;
     }
 
     public void modificarDatos(String nuevoNombre, String nuevoApellido, int nuevaEdad) {
