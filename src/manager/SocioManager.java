@@ -103,4 +103,7 @@ public class SocioManager {
             System.out.println("No hay socio creado.");
         }
     }
+
+    public void agregarSocio(Socio lucíaGómez) {
+    }
 }

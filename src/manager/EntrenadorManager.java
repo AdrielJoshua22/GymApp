@@ -82,4 +82,7 @@ public class EntrenadorManager {
             System.out.println("No hay entrenador registrado.");
         }
     }
+
+    public void agregarEntrenador(Entrenador entrenador) {
+    }
 }

@@ -1,14 +1,27 @@
+import datos.GymListaDatos;
 import manager.*;
 
 import java.util.Scanner;
 
 public class GymApp {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
+        // Instanciar managers
+        SocioManager socioManager = new SocioManager();
+        RutinaManager rutinaManager = new RutinaManager();
+        PagosManager pagosManager = new PagosManager();
+        EntrenadorManager entrenadorManager = new EntrenadorManager();
+        ClaseManager claseManager = new ClaseManager();
+
+        // Cargar datos de ejemplo
+        GymListaDatos.cargarDatos(socioManager, entrenadorManager, rutinaManager, pagosManager);
+        System.out.println("📦 Datos de ejemplo cargados correctamente.\n");
+
+        // Menú principal
         do {
-            System.out.println("\n=== GYMAPP - MENÚ PRINCIPAL ===");
+            System.out.println("=== GYMAPP - MENÚ PRINCIPAL ===");
             System.out.println("1. Gestión de Socios");
             System.out.println("2. Gestión de Rutinas");
             System.out.println("3. Gestión de Pagos");

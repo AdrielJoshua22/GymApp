@@ -105,4 +105,7 @@ public class RutinaManager {
             System.out.println("⚠️ No hay rutina creada.");
         }
     }
+
+    public void agregarRutina(Rutina fullBody) {
+    }
 }

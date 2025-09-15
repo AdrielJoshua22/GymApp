@@ -71,4 +71,7 @@ public class PagosManager {
             System.out.println("No hay pago registrado.");
         }
     }
+
+    public void agregarPago(Pagos pago) {
+    }
 }
