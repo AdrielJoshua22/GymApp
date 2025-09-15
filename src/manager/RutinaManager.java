@@ -2,10 +2,12 @@ package manager;
 
 import model.Rutina;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RutinaManager {
-    private static Rutina rutinaActual;
+    private static final List<Rutina> rutinas = new ArrayList<>();
 
     public static void mostrarMenu(Scanner scanner) {
         int opcion;
@@ -13,8 +15,8 @@ public class RutinaManager {
             System.out.println("\n--- MENÚ RUTINA ---");
             System.out.println("1. Crear Rutina");
             System.out.println("2. Modificar Rutina");
-            System.out.println("3. Mostrar Rutina");
-            System.out.println("4. Asignar Socio");
+            System.out.println("3. Mostrar Rutinas");
+            System.out.println("4. Asignar Socio a Rutina");
             System.out.println("0. Volver");
             System.out.print("Opción: ");
             opcion = scanner.nextInt();
@@ -28,10 +30,10 @@ public class RutinaManager {
                     modificarRutina(scanner);
                     break;
                 case 3:
-                    mostrarRutina();
+                    mostrarRutinas();
                     break;
                 case 4:
-                    asignarSocio();
+                    asignarSocio(scanner);
                     break;
                 case 0:
                     System.out.println("↩️ Volviendo al menú principal...");
@@ -60,17 +62,23 @@ public class RutinaManager {
         int duracion = scanner.nextInt();
         scanner.nextLine();
 
-        rutinaActual = new Rutina(idRutina, idSocio, objetivo, descripcion, grupo, ejercicios, duracion);
+        Rutina nuevaRutina = new Rutina(idRutina, idSocio, objetivo, descripcion, grupo, ejercicios, duracion);
+        rutinas.add(nuevaRutina);
         System.out.println("✅ Rutina creada.");
     }
 
     private static void modificarRutina(Scanner scanner) {
-        if (rutinaActual != null) {
-            System.out.print("Nuevo ID Rutina: ");
-            int nuevaId = scanner.nextInt();
-            System.out.print("Nuevo ID Socio: ");
-            int nuevoIdSocio = scanner.nextInt();
-            scanner.nextLine();
+        if (rutinas.isEmpty()) {
+            System.out.println("⚠️ No hay rutinas creadas.");
+            return;
+        }
+
+        System.out.print("Ingrese el ID de la rutina a modificar: ");
+        int idBuscado = scanner.nextInt();
+        scanner.nextLine();
+
+        Rutina rutina = buscarPorId(idBuscado);
+        if (rutina != null) {
             System.out.print("Nuevo objetivo: ");
             String nuevoObjetivo = scanner.nextLine();
             System.out.print("Nueva descripción: ");
@@ -83,29 +91,53 @@ public class RutinaManager {
             int nuevaDuracion = scanner.nextInt();
             scanner.nextLine();
 
-            rutinaActual.modificarRutina(nuevaId, nuevoIdSocio, nuevoObjetivo, nuevaDescripcion, nuevoGrupo, nuevaLista, nuevaDuracion);
+            rutina.modificarRutina(idBuscado, rutina.getIdSocio(), nuevoObjetivo, nuevaDescripcion, nuevoGrupo, nuevaLista, nuevaDuracion);
             System.out.println("✅ Rutina modificada.");
         } else {
-            System.out.println("⚠️ No hay rutina creada.");
+            System.out.println("❌ Rutina no encontrada.");
         }
     }
 
-    private static void mostrarRutina() {
-        if (rutinaActual != null) {
-            rutinaActual.mostrarRutina();
+    private static void mostrarRutinas() {
+        if (rutinas.isEmpty()) {
+            System.out.println("⚠️ No hay rutinas creadas.");
         } else {
-            System.out.println("⚠️ No hay rutina creada.");
+            System.out.println("📋 Rutinas disponibles:");
+            for (Rutina r : rutinas) {
+                r.mostrarRutina();
+                System.out.println("---------------------");
+            }
         }
     }
 
-    private static void asignarSocio() {
-        if (rutinaActual != null) {
-            rutinaActual.asignarSocio();
+    private static void asignarSocio(Scanner scanner) {
+        if (rutinas.isEmpty()) {
+            System.out.println("⚠️ No hay rutinas creadas.");
+            return;
+        }
+
+        System.out.print("Ingrese el ID de la rutina a asignar: ");
+        int idBuscado = scanner.nextInt();
+        scanner.nextLine();
+
+        Rutina rutina = buscarPorId(idBuscado);
+        if (rutina != null) {
+            rutina.asignarSocio();
         } else {
-            System.out.println("⚠️ No hay rutina creada.");
+            System.out.println("❌ Rutina no encontrada.");
         }
     }
 
-    public void agregarRutina(Rutina fullBody) {
+    private static Rutina buscarPorId(int id) {
+        for (Rutina r : rutinas) {
+            if (r.getIdRutina() == id) {
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public void agregarRutina(Rutina rutina) {
+        rutinas.add(rutina);
     }
 }

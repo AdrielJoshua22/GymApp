@@ -52,4 +52,11 @@ public class Rutina {
 
     }
 
+    public int getIdSocio() {
+        return 0;
+    }
+
+    public int getIdRutina() {
+        return 0;
+    }
 }
