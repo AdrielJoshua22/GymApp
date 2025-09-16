@@ -36,10 +36,10 @@ public class RutinaManager {
                     asignarSocio(scanner);
                     break;
                 case 0:
-                    System.out.println("↩️ Volviendo al menú principal...");
+                    System.out.println("Volviendo al menú principal...");
                     break;
                 default:
-                    System.out.println("❌ Opción inválida.");
+                    System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
@@ -64,12 +64,12 @@ public class RutinaManager {
 
         Rutina nuevaRutina = new Rutina(idRutina, idSocio, objetivo, descripcion, grupo, ejercicios, duracion);
         rutinas.add(nuevaRutina);
-        System.out.println("✅ Rutina creada.");
+        System.out.println("Rutina creada.");
     }
 
     private static void modificarRutina(Scanner scanner) {
         if (rutinas.isEmpty()) {
-            System.out.println("⚠️ No hay rutinas creadas.");
+            System.out.println("No hay rutinas creadas.");
             return;
         }
 
@@ -92,17 +92,17 @@ public class RutinaManager {
             scanner.nextLine();
 
             rutina.modificarRutina(idBuscado, rutina.getIdSocio(), nuevoObjetivo, nuevaDescripcion, nuevoGrupo, nuevaLista, nuevaDuracion);
-            System.out.println("✅ Rutina modificada.");
+            System.out.println("Rutina modificada.");
         } else {
-            System.out.println("❌ Rutina no encontrada.");
+            System.out.println("Rutina no encontrada.");
         }
     }
 
     private static void mostrarRutinas() {
         if (rutinas.isEmpty()) {
-            System.out.println("⚠️ No hay rutinas creadas.");
+            System.out.println("No hay rutinas creadas.");
         } else {
-            System.out.println("📋 Rutinas disponibles:");
+            System.out.println("Rutinas disponibles:");
             for (Rutina r : rutinas) {
                 r.mostrarRutina();
                 System.out.println("---------------------");
@@ -112,7 +112,7 @@ public class RutinaManager {
 
     private static void asignarSocio(Scanner scanner) {
         if (rutinas.isEmpty()) {
-            System.out.println("⚠️ No hay rutinas creadas.");
+            System.out.println("No hay rutinas creadas.");
             return;
         }
 
@@ -124,7 +124,7 @@ public class RutinaManager {
         if (rutina != null) {
             rutina.asignarSocio();
         } else {
-            System.out.println("❌ Rutina no encontrada.");
+            System.out.println("Rutina no encontrada.");
         }
     }
 

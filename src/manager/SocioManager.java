@@ -31,8 +31,8 @@ public class SocioManager {
                 case 4 -> mostrarSocioPorId(scanner);
                 case 5 -> darDeBaja(scanner);
                 case 6 -> mostrarTodosLosSocios();
-                case 0 -> System.out.println("↩️ Volviendo al menú principal...");
-                default -> System.out.println("❌ Opción inválida.");
+                case 0 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
@@ -53,7 +53,7 @@ public class SocioManager {
 
         Socio nuevoSocio = new Socio(id, nombre, apellido, dni, edad, true);
         socios.add(nuevoSocio);
-        System.out.println("✅ Socio creado.");
+        System.out.println("Socio creado.");
     }
 
     private static void modificarSocio(Scanner scanner) {
@@ -72,9 +72,9 @@ public class SocioManager {
             scanner.nextLine();
 
             socio.modificarDatos(nombre, apellido, edad);
-            System.out.println("✅ Datos modificados.");
+            System.out.println("Datos modificados.");
         } else {
-            System.out.println("⚠️ Socio no encontrado.");
+            System.out.println("Socio no encontrado.");
         }
     }
 
@@ -87,7 +87,7 @@ public class SocioManager {
         if (socio != null) {
             socio.consultarClases();
         } else {
-            System.out.println("⚠️ Socio no encontrado.");
+            System.out.println("Socio no encontrado.");
         }
     }
 
@@ -100,7 +100,7 @@ public class SocioManager {
         if (socio != null) {
             System.out.println(socio);
         } else {
-            System.out.println("⚠️ Socio no encontrado.");
+            System.out.println("Socio no encontrado.");
         }
     }
 
@@ -112,17 +112,17 @@ public class SocioManager {
         Socio socio = buscarPorId(id);
         if (socio != null) {
             socio.darBaja();
-            System.out.println("✅ Socio dado de baja.");
+            System.out.println("Socio dado de baja.");
         } else {
-            System.out.println("⚠️ Socio no encontrado.");
+            System.out.println("Socio no encontrado.");
         }
     }
 
     private static void mostrarTodosLosSocios() {
         if (socios.isEmpty()) {
-            System.out.println("⚠️ No hay socios registrados.");
+            System.out.println("No hay socios registrados.");
         } else {
-            System.out.println("📋 Lista de socios:");
+            System.out.println("Lista de socios:");
             for (Socio s : socios) {
                 System.out.println(s);
             }

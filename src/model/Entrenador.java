@@ -2,7 +2,7 @@ package model;
 
 public class Entrenador {
     private final int idEntrenador;
-    private String nombre;
+    public String nombre;
     private final String especialidad;
     private final String horarioDisponible;
 
@@ -33,7 +33,5 @@ public class Entrenador {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+
 }

@@ -1,5 +1,4 @@
 package manager;
-
 import model.Clase;
 import model.Entrenador;
 import model.Socio;
