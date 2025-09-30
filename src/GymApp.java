@@ -17,7 +17,7 @@ public class GymApp {
 
         // Cargar datos de ejemplo
         GymListaDatos.cargarDatos(socioManager, entrenadorManager, rutinaManager, pagosManager);
-        System.out.println("📦 Datos de ejemplo cargados correctamente.\n");
+        System.out.println("Datos de ejemplo cargados correctamente.\n");
 
         // Menú principal
         do {

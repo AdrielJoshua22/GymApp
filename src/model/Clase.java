@@ -44,7 +44,7 @@ public class Clase {
         }
     }
 
-    // Getters si los necesitás
+
     public String getNombreActividad() {
         return nombreActividad;
     }
