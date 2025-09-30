@@ -18,9 +18,15 @@ public class Socio {
     }
 
     public void modificarDatos(String nuevoNombre, String nuevoApellido, int nuevaEdad) {
-        this.nombre = nuevoNombre;
-        this.apellido = nuevoApellido;
-        this.edad = nuevaEdad;
+        if (nuevoNombre != null && !nuevoNombre.isEmpty()) {
+            this.nombre = nuevoNombre;
+        }
+        if (nuevoApellido != null && !nuevoApellido.isEmpty()) {
+            this.apellido = nuevoApellido;
+        }
+        if (nuevaEdad > 0) {
+            this.edad = nuevaEdad;
+        }
     }
 
     public void darBaja() {
@@ -29,7 +35,6 @@ public class Socio {
 
     public void consultarClases() {
         System.out.println("Clases disponibles para el socio " + nombre);
-        // Aquí se conectará con la clase Clase
     }
 
     @Override
