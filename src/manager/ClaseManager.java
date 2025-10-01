@@ -1,4 +1,5 @@
 package manager;
+
 import model.Clase;
 import model.Entrenador;
 import model.Socio;
@@ -22,23 +23,12 @@ public class ClaseManager {
             scanner.nextLine();
 
             switch (opcion) {
-                case 1:
-                    crearClase(scanner);
-                    break;
-                case 2:
-                    inscribirSocio(scanner);
-                    break;
-                case 3:
-                    cancelarClase();
-                    break;
-                case 4:
-                    mostrarInfo();
-                    break;
-                case 0:
-                    System.out.println("Volviendo al menú principal...");
-                    break;
-                default:
-                    System.out.println("Opción inválida.");
+                case 1 -> crearClase(scanner);
+                case 2 -> inscribirSocio(scanner);
+                case 3 -> cancelarClase();
+                case 4 -> mostrarInfo();
+                case 0 -> System.out.println("↩ Volviendo al menú principal...");
+                default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
@@ -47,26 +37,30 @@ public class ClaseManager {
         System.out.print("ID Clase: ");
         int idClase = scanner.nextInt();
         scanner.nextLine();
+
         System.out.print("Nombre de la actividad: ");
         String actividad = scanner.nextLine();
+
         System.out.print("Horario: ");
         String horario = scanner.nextLine();
+
         System.out.print("Cupo máximo: ");
         int cupo = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Datos del entrenador:");
-        System.out.print("ID Entrenador: ");
+        System.out.println("Entrenadores disponibles:");
+        EntrenadorManager.mostrarTodos();
+
+        System.out.print("ID del entrenador a asignar: ");
         int idEntrenador = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.print("Especialidad: ");
-        String especialidad = scanner.nextLine();
-        System.out.print("Horario disponible: ");
-        String horarioEntrenador = scanner.nextLine();
 
-        Entrenador entrenador = new Entrenador(idEntrenador, nombre, especialidad, horarioEntrenador);
+        Entrenador entrenador = EntrenadorManager.buscarPorId(idEntrenador);
+        if (entrenador == null) {
+            System.out.println("Entrenador no encontrado.");
+            return;
+        }
+
         claseActual = new Clase(idClase, actividad, horario, cupo, entrenador);
         System.out.println("Clase creada con éxito.");
     }
@@ -77,12 +71,16 @@ public class ClaseManager {
             System.out.print("ID Socio: ");
             int idSocio = scanner.nextInt();
             scanner.nextLine();
+
             System.out.print("Nombre: ");
             String nombre = scanner.nextLine();
+
             System.out.print("Apellido: ");
             String apellido = scanner.nextLine();
+
             System.out.print("DNI: ");
             int dni = scanner.nextInt();
+
             System.out.print("Edad: ");
             int edad = scanner.nextInt();
             scanner.nextLine();

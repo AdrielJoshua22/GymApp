@@ -25,8 +25,8 @@ public class GymListaDatos {
         socioManager.agregarSocio(new Socio(3, "Sofía ", "Blanco", 37333999, 32, true));
 
         // Entrenadores
-        entrenadorManager.agregarEntrenador(new Entrenador(101, "Carla Ruiz", "Funcional", "Turno Mañana"));
-        entrenadorManager.agregarEntrenador(new Entrenador(102, "Diego Torres", "Musculación", "Turno Tarde"));
+        entrenadorManager.agregarEntrenador(new Entrenador(101, "Carla ", "Perez", 3232333, 33, "Crosfitt", "turno mañana"));
+        entrenadorManager.agregarEntrenador(new Entrenador(102, "Diego ", "Castro", 28234234, 39, "Spining", "turno noche"));
 
         // Rutinas
         rutinaManager.agregarRutina(new Rutina(201, 1, "Ganar Masa Muscular", "Entrenamiento de fuerza", "Pecho, brazos, abdomen", "Banco plano 3x15", 60));
