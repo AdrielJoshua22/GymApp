@@ -1,6 +1,7 @@
 package manager;
 
 import model.Socio;
+import util.Validaciones;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +46,8 @@ public class SocioManager {
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
         String apellido = scanner.nextLine();
-        int dni = leerDni(scanner);
-        int edad = leerEdad(scanner);
+        int dni = Validaciones.leerDni(scanner);
+        int edad = Validaciones.leerEdad(scanner);
         Socio nuevoSocio = new Socio(id, nombre, apellido, dni, edad, true);
         socios.add(nuevoSocio);
         System.out.println("Socio creado.");
@@ -138,41 +139,5 @@ public class SocioManager {
         socios.add(socio);
     }
 
-    private static int leerDni(Scanner scanner) {
-        String dniInput;
-        int dni = 0;
-        boolean dniValido = false;
-        do {
-            System.out.print("DNI (7 u 8 dígitos numéricos): ");
-            dniInput = scanner.nextLine();
-            if (dniInput.matches("\\d{7,8}")) {
-                dni = Integer.parseInt(dniInput);
-                dniValido = true;
-            } else {
-                System.out.println("Error: El DNI debe contener solo números y tener 7 u 8 dígitos.");
-            }
-        } while (!dniValido);
-        return dni;
-    }
 
-    private static int leerEdad(Scanner scanner) {
-        String edadInput;
-        int edad = 0;
-        boolean edadValida = false;
-        do {
-            System.out.print("Edad (entre 10 y 100): ");
-            edadInput = scanner.nextLine();
-            if (edadInput.matches("\\d+")) {
-                edad = Integer.parseInt(edadInput);
-                if (edad >= 10 && edad <= 100) {
-                    edadValida = true;
-                } else {
-                    System.out.println("Error: La edad debe estar entre 10 y 100 años.");
-                }
-            } else {
-                System.out.println("Error: La edad debe contener solo números.");
-            }
-        } while (!edadValida);
-        return edad;
     }
-}
