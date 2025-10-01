@@ -33,26 +33,13 @@ public class GymApp {
             scanner.nextLine(); // limpiar buffer
 
             switch (opcion) {
-                case 1:
-                    SocioManager.mostrarMenu(scanner);
-                    break;
-                case 2:
-                    RutinaManager.mostrarMenu(scanner);
-                    break;
-                case 3:
-                    PagosManager.mostrarMenu(scanner);
-                    break;
-                case 4:
-                    EntrenadorManager.mostrarMenu(scanner);
-                    break;
-                case 5:
-                    ClaseManager.mostrarMenu(scanner);
-                    break;
-                case 0:
-                    System.out.println("¡Gracias por usar GymApp!");
-                    break;
-                default:
-                    System.out.println("Opción inválida.");
+                case 1 -> SocioManager.mostrarMenu(scanner);
+                case 2 -> RutinaManager.mostrarMenu(scanner);
+                case 3 -> PagosManager.mostrarMenu(scanner);
+                case 4 -> EntrenadorManager.mostrarMenu(scanner);
+                case 5 -> ClaseManager.mostrarMenu(scanner);
+                case 0 -> System.out.println("¡Gracias por usar GymApp!");
+                default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
 
