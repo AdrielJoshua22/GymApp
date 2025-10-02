@@ -1,4 +1,5 @@
 package manager;
+
 import model.Entrenador;
 import util.Validaciones;
 
@@ -79,8 +80,17 @@ public class EntrenadorManager {
             String clase = scanner.nextLine();
             entrenadorActual.asignarClase(clase);
         } else {
-            System.out.println("o hay entrenador registrado actualmente.");
+            System.out.println("No hay entrenador registrado actualmente.");
         }
+    }
+
+    public static void agregarEntrenador(Entrenador entrenador) {
+        if (buscarPorId(entrenador.getId()) != null) {
+            System.out.println("⚠ Ya existe un entrenador con ID " + entrenador.getId());
+            return;
+        }
+        listaEntrenadores.add(entrenador);
+        System.out.println("✅ Entrenador agregado: " + entrenador.getNombreCompleto());
     }
 
     private static void mostrarPerfil() {

@@ -27,6 +27,7 @@ public class Entrenador extends Persona {
                 " | Horario: " + horarioDisponible);
     }
 
+    // Getters y setters
     public String getEspecialidad() {
         return especialidad;
     }
