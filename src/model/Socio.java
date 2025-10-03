@@ -30,7 +30,7 @@ public class Socio extends Persona {
 
     @Override
     public void mostrarPerfil() {
-        System.out.println("👤 Socio: " + getNombreCompleto() + " | DNI: " + dni + " | Edad: " + edad + " | Estado: " + (activo ? "Activo" : "Inactivo"));
+        System.out.println("Socio: " + getNombreCompleto() + " | DNI: " + dni + " | Edad: " + edad + " | Estado: " + (activo ? "Activo" : "Inactivo"));
     }
 
     @Override

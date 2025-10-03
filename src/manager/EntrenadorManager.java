@@ -42,12 +42,10 @@ public class EntrenadorManager {
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        // Validar que no exista un entrenador con ese ID
         if (buscarPorId(id) != null) {
             System.out.println("Ya existe un entrenador con ese ID.");
             return;
         }
-
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
@@ -86,11 +84,11 @@ public class EntrenadorManager {
 
     public static void agregarEntrenador(Entrenador entrenador) {
         if (buscarPorId(entrenador.getId()) != null) {
-            System.out.println("⚠ Ya existe un entrenador con ID " + entrenador.getId());
+            System.out.println("Ya existe un entrenador con ID " + entrenador.getId());
             return;
         }
         listaEntrenadores.add(entrenador);
-        System.out.println("✅ Entrenador agregado: " + entrenador.getNombreCompleto());
+        System.out.println("Entrenador agregado: " + entrenador.getNombreCompleto());
     }
 
     private static void mostrarPerfil() {

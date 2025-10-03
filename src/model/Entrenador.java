@@ -11,16 +11,16 @@ public class Entrenador extends Persona {
     }
 
     public void asignarClase(String nombreClase) {
-        System.out.println("🏋️‍♂️ Entrenador " + getNombreCompleto() + " ha sido asignado a la clase: " + nombreClase);
+        System.out.println("Entrenador " + getNombreCompleto() + " ha sido asignado a la clase: " + nombreClase);
     }
 
     public void consultarDisponibilidad() {
-        System.out.println("📅 Entrenador " + getNombreCompleto() + " está disponible en: " + horarioDisponible);
+        System.out.println("Entrenador " + getNombreCompleto() + " está disponible en: " + horarioDisponible);
     }
 
     @Override
     public void mostrarPerfil() {
-        System.out.println("👤 Entrenador: " + getNombreCompleto() +
+        System.out.println("Entrenador: " + getNombreCompleto() +
                 " | DNI: " + getDni() +
                 " | Edad: " + getEdad() +
                 " | Especialidad: " + especialidad +
