@@ -1,14 +1,14 @@
 package manager;
 
 import model.Socio;
+import util.IdGenerador;
 import util.Validaciones;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class SocioManager {
     private static final List<Socio> socios = new ArrayList<>();
+    private static final Set<Integer> idsSocios = new HashSet<>();
 
     public static void mostrarMenu(Scanner scanner) {
         int opcion;
@@ -39,18 +39,21 @@ public class SocioManager {
     }
 
     private static void crearSocio(Scanner scanner) {
-        System.out.print("ID: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
+        int id = IdGenerador.generarId(idsSocios, true); // true indica que es socio
+        System.out.println("ID asignado automáticamente: " + id);
+
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
         String apellido = scanner.nextLine();
         int dni = Validaciones.leerDni(scanner);
         int edad = Validaciones.leerEdad(scanner);
+
         Socio nuevoSocio = new Socio(id, nombre, apellido, dni, edad, true);
         socios.add(nuevoSocio);
-        System.out.println("Socio creado.");
+        idsSocios.add(id);
+
+        System.out.println("Socio creado exitosamente con ID: " + id);
     }
 
     private static void modificarSocio(Scanner scanner) {
@@ -136,8 +139,9 @@ public class SocioManager {
     }
 
     public void agregarSocio(Socio socio) {
-        socios.add(socio);
+        if (!idsSocios.contains(socio.getIdSocio())) {
+            socios.add(socio);
+            idsSocios.add(socio.getIdSocio());
+        }
     }
-
-
-    }
+}

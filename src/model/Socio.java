@@ -39,19 +39,8 @@ public class Socio extends Persona {
                 ", DNI: " + dni + ", Edad: " + edad + ", Estado: " + (activo ? "Activo" : "Inactivo");
     }
 
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
     public int getIdSocio() {
         return id;
     }
 
-    public void setIdSocio(int idSocio) {
-        this.id = idSocio;
-    }
 }
