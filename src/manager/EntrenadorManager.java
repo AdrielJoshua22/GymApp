@@ -1,15 +1,15 @@
 package manager;
 
 import model.Entrenador;
+import util.IdGenerador;
 import util.Validaciones;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class EntrenadorManager {
     private static Entrenador entrenadorActual;
     private static final List<Entrenador> listaEntrenadores = new ArrayList<>();
+    private static final Set<Integer> idsEntrenadores = new HashSet<>();
 
     public static void mostrarMenu(Scanner scanner) {
         int opcion;
@@ -38,14 +38,9 @@ public class EntrenadorManager {
     }
 
     private static void crearEntrenador(Scanner scanner) {
-        System.out.print("ID Entrenador: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
+        int id = IdGenerador.generarId(idsEntrenadores, false); // false indica que es entrenador
+        System.out.println("ID asignado automáticamente: " + id);
 
-        if (buscarPorId(id) != null) {
-            System.out.println("Ya existe un entrenador con ese ID.");
-            return;
-        }
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
@@ -61,7 +56,9 @@ public class EntrenadorManager {
 
         entrenadorActual = new Entrenador(id, nombre, apellido, dni, edad, especialidad, horario);
         listaEntrenadores.add(entrenadorActual);
-        System.out.println("Entrenador creado correctamente.");
+        idsEntrenadores.add(id);
+
+        System.out.println("Entrenador creado correctamente con ID: " + id);
     }
 
     private static void consultarDisponibilidad() {
@@ -88,6 +85,7 @@ public class EntrenadorManager {
             return;
         }
         listaEntrenadores.add(entrenador);
+        idsEntrenadores.add(entrenador.getId());
         System.out.println("Entrenador agregado: " + entrenador.getNombreCompleto());
     }
 
