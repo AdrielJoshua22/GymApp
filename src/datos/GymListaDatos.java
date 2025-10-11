@@ -54,3 +54,5 @@ public class GymListaDatos {
         return entrenadorManager;
     }
 }
+
+PagosManager pagosManager = new PagosManager(socioManager);

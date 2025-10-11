@@ -1,6 +1,7 @@
 package manager;
 
 import model.Pagos;
+import model.Socio;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -39,22 +40,7 @@ public class PagosManager {
         } while (opcion != 0);
     }
 
-    private static void registrarPago(Scanner scanner) {
-        System.out.print("ID Pago: ");
-        int idPago = scanner.nextInt();
-        System.out.print("ID Socio: ");
-        int idSocio = scanner.nextInt();
-        System.out.print("Monto: ");
-        int monto = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("¿Está activo el pago? (true/false): ");
-        boolean estado = scanner.nextBoolean();
-        scanner.nextLine();
-
-        LocalDate fecha = LocalDate.now();
-        pagoActual = new Pagos(idPago, idSocio, monto, fecha, estado);
-        pagoActual.registrarPago();
-    }
+    private final SocioManager socioManager;
 
     private static void consultarEstado() {
         if (pagoActual != null) {
@@ -73,5 +59,33 @@ public class PagosManager {
     }
 
     public void agregarPago(Pagos pago) {
+    }
+
+    public PagosManager(SocioManager socioManager) {
+        this.socioManager = socioManager;
+    }
+
+    private static void registrarPago(Scanner scanner) {
+        System.out.print("ID Pago: ");
+        int idPago = scanner.nextInt();
+        System.out.print("ID Socio: ");
+        int idSocio = scanner.nextInt();
+        System.out.print("Monto: ");
+        int monto = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("¿Está activo el pago? (true/false): ");
+        boolean estado = scanner.nextBoolean();
+        scanner.nextLine();
+
+        LocalDate fecha = LocalDate.now();
+        pagoActual = new Pagos(idPago, idSocio, monto, fecha, estado);
+        pagoActual.registrarPago();
+
+        // Activar socio si está inactivo
+        Socio socio = SocioManager.buscarPorId(idSocio);
+        if (socio != null && !socio.isActivo()) {
+            socio.activar(); // Este método lo agregamos abajo
+            System.out.println("✅ Socio " + socio.getNombreCompleto() + " activado automáticamente tras el pago.");
+        }
     }
 }

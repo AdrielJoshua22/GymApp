@@ -24,6 +24,10 @@ public class Socio extends Persona {
         this.activo = false;
     }
 
+    public void activar() {
+        this.activo = true;
+    }
+
     public void consultarClases() {
         System.out.println("Clases disponibles para el socio " + nombre);
     }
