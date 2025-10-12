@@ -145,7 +145,5 @@ public class SocioManager {
         }
     }
 
-    public List<Socio> getSocios() {
-        return socios;
-    }
+
 }

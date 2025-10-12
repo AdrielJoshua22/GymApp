@@ -56,9 +56,9 @@ public class PagosManager {
         Socio socio = socioManager.buscarPorId(idSocio);
         if (socio != null && !socio.isActivo()) {
             socio.activar();
-            System.out.println("✅ Socio " + socio.getNombreCompleto() + " activado automáticamente tras el pago.");
+            System.out.println("Socio " + socio.getNombreCompleto() + " activado automáticamente tras el pago.");
         } else if (socio == null) {
-            System.out.println("⚠ No se encontró un socio con ese ID.");
+            System.out.println("No se encontró un socio con ese ID.");
         }
     }
 
