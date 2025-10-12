@@ -7,10 +7,10 @@ import util.Validaciones;
 import java.util.*;
 
 public class SocioManager {
-    private static final List<Socio> socios = new ArrayList<>();
-    private static final Set<Integer> idsSocios = new HashSet<>();
+    private final List<Socio> socios = new ArrayList<>();
+    private final Set<Integer> idsSocios = new HashSet<>();
 
-    public static void mostrarMenu(Scanner scanner) {
+    public void mostrarMenu(Scanner scanner) {
         int opcion;
         do {
             System.out.println("\n--- MENÚ SOCIO ---");
@@ -38,8 +38,8 @@ public class SocioManager {
         } while (opcion != 0);
     }
 
-    private static void crearSocio(Scanner scanner) {
-        int id = IdGenerador.generarId(idsSocios, true); // true indica que es socio
+    private void crearSocio(Scanner scanner) {
+        int id = IdGenerador.generarId(idsSocios, true);
         System.out.println("ID asignado automáticamente: " + id);
 
         System.out.print("Nombre: ");
@@ -56,7 +56,7 @@ public class SocioManager {
         System.out.println("Socio creado exitosamente con ID: " + id);
     }
 
-    private static void modificarSocio(Scanner scanner) {
+    private void modificarSocio(Scanner scanner) {
         System.out.print("Ingrese el ID del socio a modificar: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -78,7 +78,7 @@ public class SocioManager {
         }
     }
 
-    private static void asignarClase(Scanner scanner) {
+    public void asignarClase(Scanner scanner) {
         System.out.print("Ingrese el ID del socio: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -91,7 +91,7 @@ public class SocioManager {
         }
     }
 
-    private static void mostrarSocioPorId(Scanner scanner) {
+    public void mostrarSocioPorId(Scanner scanner) {
         System.out.print("Ingrese el ID del socio: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -104,7 +104,7 @@ public class SocioManager {
         }
     }
 
-    private static void darDeBaja(Scanner scanner) {
+    private void darDeBaja(Scanner scanner) {
         System.out.print("Ingrese el ID del socio a dar de baja: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -118,7 +118,7 @@ public class SocioManager {
         }
     }
 
-    private static void mostrarTodosLosSocios() {
+    private void mostrarTodosLosSocios() {
         if (socios.isEmpty()) {
             System.out.println("No hay socios registrados.");
         } else {
@@ -129,7 +129,7 @@ public class SocioManager {
         }
     }
 
-    private static Socio buscarPorId(int id) {
+    public Socio buscarPorId(int id) {
         for (Socio s : socios) {
             if (s.getIdSocio() == id) {
                 return s;
@@ -143,5 +143,9 @@ public class SocioManager {
             socios.add(socio);
             idsSocios.add(socio.getIdSocio());
         }
+    }
+
+    public List<Socio> getSocios() {
+        return socios;
     }
 }

@@ -53,6 +53,6 @@ public class GymListaDatos {
     public EntrenadorManager getEntrenadorManager() {
         return entrenadorManager;
     }
+
 }
 
-PagosManager pagosManager = new PagosManager(socioManager);

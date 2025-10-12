@@ -43,6 +43,10 @@ public class Socio extends Persona {
                 ", DNI: " + dni + ", Edad: " + edad + ", Estado: " + (activo ? "Activo" : "Inactivo");
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
     public int getIdSocio() {
         return id;
     }

@@ -7,9 +7,14 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class PagosManager {
-    private static Pagos pagoActual;
+    private final SocioManager socioManager;
+    private Pagos pagoActual;
 
-    public static void mostrarMenu(Scanner scanner) {
+    public PagosManager(SocioManager socioManager) {
+        this.socioManager = socioManager;
+    }
+
+    public void mostrarMenu(Scanner scanner) {
         int opcion;
         do {
             System.out.println("\n--- MENÚ PAGOS ---");
@@ -22,50 +27,16 @@ public class PagosManager {
             scanner.nextLine();
 
             switch (opcion) {
-                case 1:
-                    registrarPago(scanner);
-                    break;
-                case 2:
-                    consultarEstado();
-                    break;
-                case 3:
-                    generarComprobante();
-                    break;
-                case 0:
-                    System.out.println("↩Volviendo al menú principal...");
-                    break;
-                default:
-                    System.out.println("Opción inválida.");
+                case 1 -> registrarPago(scanner);
+                case 2 -> consultarEstado();
+                case 3 -> generarComprobante();
+                case 0 -> System.out.println("↩ Volviendo al menú principal...");
+                default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
 
-    private final SocioManager socioManager;
-
-    private static void consultarEstado() {
-        if (pagoActual != null) {
-            System.out.println("Estado del pago: " + pagoActual.consultarEstado());
-        } else {
-            System.out.println("No hay pago registrado.");
-        }
-    }
-
-    private static void generarComprobante() {
-        if (pagoActual != null) {
-            System.out.println(pagoActual.generarComprobante());
-        } else {
-            System.out.println("No hay pago registrado.");
-        }
-    }
-
-    public void agregarPago(Pagos pago) {
-    }
-
-    public PagosManager(SocioManager socioManager) {
-        this.socioManager = socioManager;
-    }
-
-    private static void registrarPago(Scanner scanner) {
+    public void registrarPago(Scanner scanner) {
         System.out.print("ID Pago: ");
         int idPago = scanner.nextInt();
         System.out.print("ID Socio: ");
@@ -82,10 +53,32 @@ public class PagosManager {
         pagoActual.registrarPago();
 
         // Activar socio si está inactivo
-        Socio socio = SocioManager.buscarPorId(idSocio);
+        Socio socio = socioManager.buscarPorId(idSocio);
         if (socio != null && !socio.isActivo()) {
-            socio.activar(); // Este método lo agregamos abajo
+            socio.activar();
             System.out.println("✅ Socio " + socio.getNombreCompleto() + " activado automáticamente tras el pago.");
+        } else if (socio == null) {
+            System.out.println("⚠ No se encontró un socio con ese ID.");
         }
+    }
+
+    private void consultarEstado() {
+        if (pagoActual != null) {
+            System.out.println("Estado del pago: " + pagoActual.consultarEstado());
+        } else {
+            System.out.println("No hay pago registrado.");
+        }
+    }
+
+    private void generarComprobante() {
+        if (pagoActual != null) {
+            System.out.println(pagoActual.generarComprobante());
+        } else {
+            System.out.println("No hay pago registrado.");
+        }
+    }
+
+    public void agregarPago(Pagos pago) {
+        // Si querés guardar historial, podés implementar una lista aquí
     }
 }
