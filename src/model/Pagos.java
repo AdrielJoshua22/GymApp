@@ -40,6 +40,26 @@ public class Pagos {
                 "--------------------------";
     }
 
+    public int getIdPago() {
+        return idPago;
+    }
+
+    public int getIdSocio() {
+        return idSocio;
+    }
+
+    public int getMonto() {
+        return monto;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public boolean isActivo() {
+        return estado;
+    }
+
 }
 
 

@@ -51,4 +51,12 @@ public class Socio extends Persona {
         return id;
     }
 
+    public String getNombreCompleto() {
+        return nombre + " " + apellido;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
 }

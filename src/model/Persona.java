@@ -39,5 +39,6 @@ public abstract class Persona {
         return apellido;
     }
 
+
     public abstract void mostrarPerfil();
 }

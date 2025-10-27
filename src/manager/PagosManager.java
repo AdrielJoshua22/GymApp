@@ -70,15 +70,22 @@ public class PagosManager {
         }
     }
 
+    private final ComprobanteManager comprobanteManager = new ComprobanteManager();
+
     private void generarComprobante() {
         if (pagoActual != null) {
-            System.out.println(pagoActual.generarComprobante());
+            Socio socio = socioManager.buscarPorId(pagoActual.getIdSocio());
+            if (socio != null) {
+                comprobanteManager.generarComprobante(pagoActual, socio);
+            } else {
+                System.out.println("No se encontró el socio para generar el ticket.");
+            }
         } else {
             System.out.println("No hay pago registrado.");
         }
     }
 
     public void agregarPago(Pagos pago) {
-        // Si querés guardar historial, podés implementar una lista aquí
+
     }
 }
