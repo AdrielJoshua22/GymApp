@@ -1,7 +1,10 @@
 package model;
 
+import servicios.GestorArchivos;
+
 public class Socio extends Persona {
     private boolean activo;
+    private AptoMedico aptoMedico; // Nuevo atributo
 
     public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo) {
         super(idSocio, nombre, apellido, dni, edad);
@@ -32,6 +35,18 @@ public class Socio extends Persona {
         System.out.println("Clases disponibles para el socio " + nombre);
     }
 
+    public void asignarAptoMedico(AptoMedico apto) {
+        this.aptoMedico = apto;
+    }
+
+    public void subirAptoMedico(GestorArchivos gestor) {
+        if (aptoMedico != null) {
+            gestor.subirArchivo(aptoMedico);
+        } else {
+            System.out.println("El socio no tiene un apto médico asignado.");
+        }
+    }
+
     @Override
     public void mostrarPerfil() {
         System.out.println("Socio: " + getNombreCompleto() + " | DNI: " + dni + " | Edad: " + edad + " | Estado: " + (activo ? "Activo" : "Inactivo"));
@@ -59,4 +74,7 @@ public class Socio extends Persona {
         return dni;
     }
 
+    public AptoMedico getAptoMedico() {
+        return aptoMedico;
+    }
 }
