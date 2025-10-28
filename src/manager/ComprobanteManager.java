@@ -1,5 +1,4 @@
 package manager;
-
 import model.Pagos;
 import model.Socio;
 import util.TicketPago;
