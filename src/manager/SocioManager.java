@@ -49,7 +49,7 @@ public class SocioManager {
         int dni = Validaciones.leerDni(scanner);
         int edad = Validaciones.leerEdad(scanner);
 
-        Socio nuevoSocio = new Socio(id, nombre, apellido, dni, edad, true);
+        Socio nuevoSocio = new Socio(id, nombre, apellido, dni, edad, true, true);
         socios.add(nuevoSocio);
         idsSocios.add(id);
 

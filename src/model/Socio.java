@@ -6,7 +6,7 @@ public class Socio extends Persona {
     private boolean activo;
     private AptoMedico aptoMedico; // Nuevo atributo
 
-    public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo) {
+    public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo, boolean aptoMedico) {
         super(idSocio, nombre, apellido, dni, edad);
         this.activo = activo;
     }
@@ -49,7 +49,18 @@ public class Socio extends Persona {
 
     @Override
     public void mostrarPerfil() {
-        System.out.println("Socio: " + getNombreCompleto() + " | DNI: " + dni + " | Edad: " + edad + " | Estado: " + (activo ? "Activo" : "Inactivo"));
+        String estadoApto;
+        if (aptoMedico != null) {
+            estadoApto = "Subido (" + aptoMedico.obtenerNombreArchivo() + " el " + aptoMedico.getFechaSubida() + ")";
+        } else {
+            estadoApto = "Pendiente a subir";
+        }
+
+        System.out.println("Socio: " + getNombreCompleto() +
+                " | DNI: " + dni +
+                " | Edad: " + edad +
+                " | Estado: " + (activo ? "Activo" : "Inactivo") +
+                " | Apto médico: " + estadoApto);
     }
 
     @Override
@@ -74,7 +85,5 @@ public class Socio extends Persona {
         return dni;
     }
 
-    public AptoMedico getAptoMedico() {
-        return aptoMedico;
-    }
+
 }

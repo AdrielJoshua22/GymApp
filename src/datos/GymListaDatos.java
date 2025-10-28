@@ -4,10 +4,7 @@ import manager.EntrenadorManager;
 import manager.PagosManager;
 import manager.RutinaManager;
 import manager.SocioManager;
-import model.Entrenador;
-import model.Pagos;
-import model.Rutina;
-import model.Socio;
+import model.*;
 
 import java.time.LocalDate;
 
@@ -28,9 +25,27 @@ public class GymListaDatos {
     }
 
     private static void cargarSocios(SocioManager socioManager) {
-        socioManager.agregarSocio(new Socio(1, "Lucía", "Gomez", 28555789, 37, true));
-        socioManager.agregarSocio(new Socio(2, "Martín", "Perez", 27889707, 38, true));
-        socioManager.agregarSocio(new Socio(3, "Sofía", "Blanco", 37333999, 32, true));
+
+        Socio lucia = new Socio(1, "Lucía", "Gomez", 28555789, 37, true, true);
+        Socio martin = new Socio(2, "Martín", "Perez", 27889707, 38, true, true);
+        Socio sofia = new Socio(3, "Sofía", "Blanco", 37333999, 32, true, true);
+
+
+        byte[] contenidoMartin = "Apto médico de Martín".getBytes();
+        byte[] contenidoLucia = "Apto médico de Lucía".getBytes();
+
+
+        AptoMedico aptoMartin = new AptoMedico("apto_martin.pdf", contenidoMartin, "application/pdf");
+        AptoMedico aptoLucia = new AptoMedico("apto_lucia.pdf", contenidoLucia, "application/pdf");
+
+
+        martin.asignarAptoMedico(aptoMartin);
+        lucia.asignarAptoMedico(aptoLucia);
+
+
+        socioManager.agregarSocio(lucia);
+        socioManager.agregarSocio(martin);
+        socioManager.agregarSocio(sofia);
     }
 
     public static void cargarEntrenadores(EntrenadorManager entrenadorManager) {

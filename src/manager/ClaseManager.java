@@ -85,7 +85,7 @@ public class ClaseManager {
             int edad = scanner.nextInt();
             scanner.nextLine();
 
-            Socio socio = new Socio(idSocio, nombre, apellido, dni, edad, true);
+            Socio socio = new Socio(idSocio, nombre, apellido, dni, edad, true, true);
             claseActual.inscribirSocio(socio);
         } else {
             System.out.println("No hay clase creada.");

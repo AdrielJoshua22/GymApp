@@ -6,6 +6,8 @@ public abstract class Persona {
     protected String apellido;
     protected int dni;
     protected int edad;
+    protected boolean aptoMedico;
+
 
     public Persona(int id, String nombre, String apellido, int dni, int edad) {
         this.id = id;
@@ -39,6 +41,9 @@ public abstract class Persona {
         return apellido;
     }
 
+    public boolean isAptoMedico() {
+        return aptoMedico;
+    }
 
     public abstract void mostrarPerfil();
 }
