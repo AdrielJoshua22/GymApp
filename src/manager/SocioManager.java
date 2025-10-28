@@ -124,7 +124,7 @@ public class SocioManager {
         } else {
             System.out.println("Lista de socios:");
             for (Socio s : socios) {
-                System.out.println(s);
+                s.mostrarPerfil();
             }
         }
     }
