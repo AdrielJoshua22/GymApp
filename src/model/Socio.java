@@ -4,11 +4,13 @@ import servicios.GestorArchivos;
 
 public class Socio extends Persona {
     private boolean activo;
-    private AptoMedico aptoMedico; // Nuevo atributo
+    private AptoMedico aptoMedico;
+    // Nuevo atributo
 
     public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo, boolean aptoMedico) {
         super(idSocio, nombre, apellido, dni, edad);
         this.activo = activo;
+
     }
 
     public void modificarDatos(String nuevoNombre, String nuevoApellido, int nuevaEdad) {
@@ -109,5 +111,17 @@ public class Socio extends Persona {
 
     public AptoMedico getAptoMedico() {
         return aptoMedico;
+    }
+
+    public void setObjetivoEntrenamiento(Objetivo objetivoEntrenamiento) {
+        this.objetivoEntrenamiento = objetivoEntrenamiento;
+    }
+
+    public void setNivel(NivelDificultad nivel) {
+        this.nivel = nivel;
+    }
+
+    public void setTiempoDisponible(int tiempoDisponible) {
+        this.tiempoDisponible = tiempoDisponible;
     }
 }

@@ -1,5 +1,7 @@
 package manager;
 
+import model.NivelDificultad;
+import model.Objetivo;
 import model.Rutina;
 import model.Socio;
 import servicios.PlanificadorRutinas;
@@ -141,16 +143,48 @@ public class RutinaManager {
 
         Socio socio = socioManager.buscarPorId(id);
         if (socio != null && socio.isActivo()) {
-            if (socio.getAptoMedico() == null) {
-                System.out.println("El socio no tiene apto médico asignado. No se puede generar rutina.");
-                return;
+            // Si falta perfil, lo configuramos en el momento
+            if (socio.getObjetivoEntrenamiento() == null || socio.getNivel() == null) {
+                System.out.println("El socio no tiene perfil configurado. Vamos a configurarlo ahora.");
+
+                System.out.println("Seleccione objetivo:");
+                for (Objetivo obj : Objetivo.values()) {
+                    System.out.println("- " + obj.name());
+                }
+                System.out.print("Objetivo: ");
+                String objetivoStr = scanner.nextLine().toUpperCase();
+
+                System.out.println("Seleccione nivel:");
+                for (NivelDificultad nivel : NivelDificultad.values()) {
+                    System.out.println("- " + nivel.name());
+                }
+                System.out.print("Nivel: ");
+                String nivelStr = scanner.nextLine().toUpperCase();
+
+                System.out.print("Tiempo disponible (minutos): ");
+                int tiempo = scanner.nextInt();
+                scanner.nextLine();
+
+                try {
+                    socio.setObjetivoEntrenamiento(Objetivo.valueOf(objetivoStr));
+                    socio.setNivel(NivelDificultad.valueOf(nivelStr));
+                    socio.setTiempoDisponible(tiempo);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Valores inválidos. No se pudo configurar el perfil.");
+                    return;
+                }
             }
 
             PlanificadorRutinas planificador = new PlanificadorRutinas();
             Rutina rutina = planificador.generarRutinaPara(socio);
-            rutinas.add(rutina);
-            System.out.println("Rutina generada automáticamente:");
-            rutina.mostrarRutina();
+
+            if (rutina != null) {
+                rutinas.add(rutina);
+                System.out.println("Rutina generada automáticamente:");
+                rutina.mostrarRutina();
+            } else {
+                System.out.println("No se pudo generar la rutina.");
+            }
         } else {
             System.out.println("Socio no encontrado o inactivo.");
         }
