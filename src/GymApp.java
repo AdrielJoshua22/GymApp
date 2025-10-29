@@ -34,7 +34,7 @@ public class GymApp {
 
             switch (opcion) {
                 case 1 -> socioManager.mostrarMenu(scanner);
-                case 2 -> RutinaManager.mostrarMenu(scanner);
+                case 2 -> RutinaManager.mostrarMenu(scanner, socioManager);
                 case 3 -> pagosManager.mostrarMenu(scanner);
                 case 4 -> EntrenadorManager.mostrarMenu(scanner);
                 case 5 -> ClaseManager.mostrarMenu(scanner);

@@ -1,6 +1,8 @@
 package manager;
 
 import model.Rutina;
+import model.Socio;
+import servicios.PlanificadorRutinas;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.Scanner;
 public class RutinaManager {
     private static final List<Rutina> rutinas = new ArrayList<>();
 
-    public static void mostrarMenu(Scanner scanner) {
+    public static void mostrarMenu(Scanner scanner, SocioManager socioManager) {
         int opcion;
         do {
             System.out.println("\n--- MENÚ RUTINA ---");
@@ -17,29 +19,20 @@ public class RutinaManager {
             System.out.println("2. Modificar Rutina");
             System.out.println("3. Mostrar Rutinas");
             System.out.println("4. Asignar Socio a Rutina");
+            System.out.println("5. Generar Rutina Inteligente");
             System.out.println("0. Volver");
             System.out.print("Opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
 
             switch (opcion) {
-                case 1:
-                    crearRutina(scanner);
-                    break;
-                case 2:
-                    modificarRutina(scanner);
-                    break;
-                case 3:
-                    mostrarRutinas();
-                    break;
-                case 4:
-                    asignarSocio(scanner);
-                    break;
-                case 0:
-                    System.out.println("Volviendo al menú principal...");
-                    break;
-                default:
-                    System.out.println("Opción inválida.");
+                case 1 -> crearRutina(scanner);
+                case 2 -> modificarRutina(scanner);
+                case 3 -> mostrarRutinas();
+                case 4 -> asignarSocio(scanner);
+                case 5 -> generarRutinaInteligente(scanner, socioManager);
+                case 0 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }
@@ -139,5 +132,27 @@ public class RutinaManager {
 
     public void agregarRutina(Rutina rutina) {
         rutinas.add(rutina);
+    }
+
+    private static void generarRutinaInteligente(Scanner scanner, SocioManager socioManager) {
+        System.out.print("Ingrese el ID del socio: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Socio socio = socioManager.buscarPorId(id);
+        if (socio != null && socio.isActivo()) {
+            if (socio.getAptoMedico() == null) {
+                System.out.println("El socio no tiene apto médico asignado. No se puede generar rutina.");
+                return;
+            }
+
+            PlanificadorRutinas planificador = new PlanificadorRutinas();
+            Rutina rutina = planificador.generarRutinaPara(socio);
+            rutinas.add(rutina);
+            System.out.println("Rutina generada automáticamente:");
+            rutina.mostrarRutina();
+        } else {
+            System.out.println("Socio no encontrado o inactivo.");
+        }
     }
 }

@@ -53,10 +53,22 @@ public class Rutina {
     }
 
     public int getIdSocio() {
-        return 0;
+        return idSocio;
     }
 
     public int getIdRutina() {
-        return 0;
+        return idRutina;
+    }
+
+    public void activar() {
+        this.activa = true;
+    }
+
+    public void desactivar() {
+        this.activa = false;
+    }
+
+    public boolean isActiva() {
+        return activa;
     }
 }

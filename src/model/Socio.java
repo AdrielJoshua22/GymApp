@@ -85,5 +85,29 @@ public class Socio extends Persona {
         return dni;
     }
 
+    private Objetivo objetivoEntrenamiento;
+    private NivelDificultad nivel;
+    private int tiempoDisponible; // en minutos
 
+    public void configurarEntrenamiento(Objetivo objetivo, NivelDificultad nivel, int tiempoDisponible) {
+        this.objetivoEntrenamiento = objetivo;
+        this.nivel = nivel;
+        this.tiempoDisponible = tiempoDisponible;
+    }
+
+    public Objetivo getObjetivoEntrenamiento() {
+        return objetivoEntrenamiento;
+    }
+
+    public NivelDificultad getNivel() {
+        return nivel;
+    }
+
+    public int getTiempoDisponible() {
+        return tiempoDisponible;
+    }
+
+    public AptoMedico getAptoMedico() {
+        return aptoMedico;
+    }
 }

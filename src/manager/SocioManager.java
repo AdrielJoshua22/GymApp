@@ -1,5 +1,7 @@
 package manager;
 
+import model.NivelDificultad;
+import model.Objetivo;
 import model.Socio;
 import util.IdGenerador;
 import util.Validaciones;
@@ -20,6 +22,7 @@ public class SocioManager {
             System.out.println("4. Mostrar Socio por ID");
             System.out.println("5. Dar de Baja");
             System.out.println("6. Mostrar todos los socios");
+            System.out.println("7. rutinas");
             System.out.println("0. Volver");
             System.out.print("Opción: ");
             opcion = scanner.nextInt();
@@ -33,6 +36,7 @@ public class SocioManager {
                 case 5 -> darDeBaja(scanner);
                 case 6 -> mostrarTodosLosSocios();
                 case 0 -> System.out.println("Volviendo al menú principal...");
+                case 7 -> configurarEntrenamiento(scanner);
                 default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
@@ -123,9 +127,8 @@ public class SocioManager {
             System.out.println("No hay socios registrados.");
         } else {
             System.out.println("Lista de socios:");
-            for (Socio s : socios) {
+            for (Socio s : socios)
                 s.mostrarPerfil();
-            }
         }
     }
 
@@ -145,5 +148,39 @@ public class SocioManager {
         }
     }
 
+    private void configurarEntrenamiento(Scanner scanner) {
+        System.out.print("Ingrese el ID del socio: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Socio socio = buscarPorId(id);
+        if (socio != null) {
+            System.out.println("Seleccione objetivo (1-Hipertrofia, 2-Cardio, 3-Movilidad): ");
+            int obj = scanner.nextInt();
+            Objetivo objetivo = switch (obj) {
+                case 1 -> Objetivo.HIPERTROFIA;
+                case 2 -> Objetivo.CARDIO;
+                case 3 -> Objetivo.MOVILIDAD;
+                default -> Objetivo.CARDIO;
+            };
+
+            System.out.println("Seleccione nivel (1-Principiante, 2-Intermedio, 3-Avanzado): ");
+            int niv = scanner.nextInt();
+            NivelDificultad nivel = switch (niv) {
+                case 1 -> NivelDificultad.PRINCIPIANTE;
+                case 2 -> NivelDificultad.INTERMEDIO;
+                case 3 -> NivelDificultad.AVANZADO;
+                default -> NivelDificultad.PRINCIPIANTE;
+            };
+
+            System.out.print("Tiempo disponible por sesión (minutos): ");
+            int tiempo = scanner.nextInt();
+
+            socio.configurarEntrenamiento(objetivo, nivel, tiempo);
+            System.out.println("Perfil de entrenamiento configurado.");
+        } else {
+            System.out.println("Socio no encontrado.");
+        }
+    }
 
 }
