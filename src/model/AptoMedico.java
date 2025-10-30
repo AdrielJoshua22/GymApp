@@ -28,6 +28,7 @@ public class AptoMedico implements ArchivoSubible {
         return tipoMime;
     }
 
+
     private final LocalDate fechaSubida;
 
     public AptoMedico(String nombreArchivo, byte[] contenido, String tipoMime) {

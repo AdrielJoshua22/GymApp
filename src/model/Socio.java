@@ -5,12 +5,14 @@ import servicios.GestorArchivos;
 public class Socio extends Persona {
     private boolean activo;
     private AptoMedico aptoMedico;
-    // Nuevo atributo
 
-    public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo, boolean aptoMedico) {
+    private Objetivo objetivoEntrenamiento;
+    private NivelDificultad nivel;
+    private int tiempoDisponible; // en minutos
+
+    public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo) {
         super(idSocio, nombre, apellido, dni, edad);
         this.activo = activo;
-
     }
 
     public void modificarDatos(String nuevoNombre, String nuevoApellido, int nuevaEdad) {
@@ -47,6 +49,14 @@ public class Socio extends Persona {
         } else {
             System.out.println("El socio no tiene un apto médico asignado.");
         }
+    }
+
+    public boolean tieneAptoMedico() {
+        return aptoMedico != null;
+    }
+
+    public AptoMedico getAptoMedico() {
+        return aptoMedico;
     }
 
     @Override
@@ -87,10 +97,6 @@ public class Socio extends Persona {
         return dni;
     }
 
-    private Objetivo objetivoEntrenamiento;
-    private NivelDificultad nivel;
-    private int tiempoDisponible; // en minutos
-
     public void configurarEntrenamiento(Objetivo objetivo, NivelDificultad nivel, int tiempoDisponible) {
         this.objetivoEntrenamiento = objetivo;
         this.nivel = nivel;
@@ -107,10 +113,6 @@ public class Socio extends Persona {
 
     public int getTiempoDisponible() {
         return tiempoDisponible;
-    }
-
-    public AptoMedico getAptoMedico() {
-        return aptoMedico;
     }
 
     public void setObjetivoEntrenamiento(Objetivo objetivoEntrenamiento) {

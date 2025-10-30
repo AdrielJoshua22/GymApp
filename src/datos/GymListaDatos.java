@@ -25,24 +25,24 @@ public class GymListaDatos {
     }
 
     private static void cargarSocios(SocioManager socioManager) {
+        // Crear socios sin el boolean aptoMedico
+        Socio lucia = new Socio(1, "Lucía", "Gomez", 28555789, 37, true);
+        Socio martin = new Socio(2, "Martín", "Perez", 27889707, 38, true);
+        Socio sofia = new Socio(3, "Sofía", "Blanco", 37333999, 32, true);
 
-        Socio lucia = new Socio(1, "Lucía", "Gomez", 28555789, 37, true, true);
-        Socio martin = new Socio(2, "Martín", "Perez", 27889707, 38, true, true);
-        Socio sofia = new Socio(3, "Sofía", "Blanco", 37333999, 32, true, true);
-
-
+        // Crear contenido de aptos médicos
         byte[] contenidoMartin = "Apto médico de Martín".getBytes();
         byte[] contenidoLucia = "Apto médico de Lucía".getBytes();
 
-
+        // Crear objetos AptoMedico
         AptoMedico aptoMartin = new AptoMedico("apto_martin.pdf", contenidoMartin, "application/pdf");
         AptoMedico aptoLucia = new AptoMedico("apto_lucia.pdf", contenidoLucia, "application/pdf");
 
-
+        // Asignar aptos médicos a los socios
         martin.asignarAptoMedico(aptoMartin);
         lucia.asignarAptoMedico(aptoLucia);
 
-
+        // Agregar socios al sistema
         socioManager.agregarSocio(lucia);
         socioManager.agregarSocio(martin);
         socioManager.agregarSocio(sofia);

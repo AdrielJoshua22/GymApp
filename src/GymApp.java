@@ -3,6 +3,9 @@ import manager.*;
 
 import java.util.Scanner;
 
+import static servicios.GestorArchivos.subirAptoMedicoComoArchivo;
+
+
 public class GymApp {
     static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -27,6 +30,7 @@ public class GymApp {
             System.out.println("3. Gestión de Pagos");
             System.out.println("4. Gestión de Entrenadores");
             System.out.println("5. Gestión de Clases");
+            System.out.println("6. Subir apto médico (archivo)");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
@@ -38,6 +42,11 @@ public class GymApp {
                 case 3 -> pagosManager.mostrarMenu(scanner);
                 case 4 -> EntrenadorManager.mostrarMenu(scanner);
                 case 5 -> ClaseManager.mostrarMenu(scanner);
+                case 6 -> {
+                    subirAptoMedicoComoArchivo();
+                    break;
+                }
+
                 case 0 -> System.out.println("¡Gracias por usar GymApp!");
                 default -> System.out.println("Opción inválida.");
             }

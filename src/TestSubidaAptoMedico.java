@@ -8,7 +8,7 @@ public class TestSubidaAptoMedico {
         GestorArchivos gestor = new GestorArchivos("archivos/archivos.aptos");
 
         // 2. Crear un socio
-        Socio socio = new Socio(1, "Adriel", "Gómez", 12345678, 30, true, true);
+        Socio socio = new Socio(1, "Adriel", "Gómez", 12345678, 30, true);
 
         // 3. Simular contenido de un apto médico
         String contenidoTexto = "Este es el apto médico de Adriel.";

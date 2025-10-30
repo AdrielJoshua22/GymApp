@@ -1,10 +1,10 @@
 === GYMAPP - TICKET DE PAGO ===
-Fecha: 27/10/2025
-Socio: Sofía Blanco
-DNI: 37333999
+Fecha: 30/10/2025
+Socio: Martín Perez
+DNI: 27889707
 Estado del socio: Activo
 ID Pago: 1
 Monto: $5000
 Estado del pago: Activo
-Comprobante Nº: 471075
+Comprobante Nº: 2384
 ===============================

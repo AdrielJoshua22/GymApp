@@ -41,9 +41,6 @@ public abstract class Persona {
         return apellido;
     }
 
-    public boolean isAptoMedico() {
-        return aptoMedico;
-    }
 
     public abstract void mostrarPerfil();
 }
