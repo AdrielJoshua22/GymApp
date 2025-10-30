@@ -11,7 +11,6 @@ import util.Validaciones;
 import java.util.*;
 
 public class SocioManager {
-    private final List<Socio> listaSocios = new ArrayList<>();
 
     private final List<Socio> socios = new ArrayList<>();
     private final Set<Integer> idsSocios = new HashSet<>();
@@ -47,7 +46,7 @@ public class SocioManager {
                     int id = scanner.nextInt();
                     scanner.nextLine(); // limpiar buffer
 
-                    Socio socio = buscarSocioPorId(id);
+                    Socio socio = buscarPorId(id);
                     if (socio == null) {
                         System.out.println("⚠️ Socio no encontrado.");
                     } else {
@@ -211,7 +210,8 @@ public class SocioManager {
         int id = scanner.nextInt();
         scanner.nextLine(); // limpiar buffer
 
-        Socio socio = buscarSocioPorId(id);
+        Socio socio = buscarPorId(id);
+
         if (socio == null) {
             System.out.println("⚠️ Socio no encontrado.");
             return;
@@ -244,10 +244,4 @@ public class SocioManager {
         System.out.println("✅ Apto médico subido correctamente para " + socio.getNombreCompleto());
     }
 
-    public Socio buscarSocioPorId(int id) {
-        for (Socio s : listaSocios) {
-            if (s.getIdSocio() == id) return s;
-        }
-        return null;
-    }
 }
