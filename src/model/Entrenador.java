@@ -4,6 +4,7 @@ public class Entrenador extends Persona {
     private String especialidad;
     private String horarioDisponible;
 
+
     public Entrenador(int id, String nombre, String apellido, int dni, int edad, String especialidad, String horarioDisponible) {
         super(id, nombre, apellido, dni, edad);
         this.especialidad = especialidad;
@@ -42,5 +43,11 @@ public class Entrenador extends Persona {
 
     public void setHorarioDisponible(String horarioDisponible) {
         this.horarioDisponible = horarioDisponible;
+    }
+
+    @Override
+    public void subirAptoMedico() {
+        // Lógica específica para subir el apto médico del entrenador
+        System.out.println("Apto médico subido correctamente para el entrenador.");
     }
 }

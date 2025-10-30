@@ -1,6 +1,8 @@
 package model;
 
+
 import servicios.GestorArchivos;
+
 
 public class Socio extends Persona {
     private boolean activo;
@@ -9,6 +11,13 @@ public class Socio extends Persona {
     private Objetivo objetivoEntrenamiento;
     private NivelDificultad nivel;
     private int tiempoDisponible; // en minutos
+
+    @Override
+    public void subirAptoMedico() {
+        // Lógica para subir el apto médico
+        System.out.println("Apto médico subido correctamente para el socio.");
+    }
+
 
     public Socio(int idSocio, String nombre, String apellido, int dni, int edad, boolean activo) {
         super(idSocio, nombre, apellido, dni, edad);
@@ -126,4 +135,5 @@ public class Socio extends Persona {
     public void setTiempoDisponible(int tiempoDisponible) {
         this.tiempoDisponible = tiempoDisponible;
     }
+
 }

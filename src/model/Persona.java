@@ -43,4 +43,6 @@ public abstract class Persona {
 
 
     public abstract void mostrarPerfil();
+
+    public abstract void subirAptoMedico();
 }

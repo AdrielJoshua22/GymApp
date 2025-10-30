@@ -1,14 +1,18 @@
 package manager;
 
+import model.AptoMedico;
 import model.NivelDificultad;
 import model.Objetivo;
 import model.Socio;
+import servicios.GestorArchivos;
 import util.IdGenerador;
 import util.Validaciones;
 
 import java.util.*;
 
 public class SocioManager {
+    private final List<Socio> listaSocios = new ArrayList<>();
+
     private final List<Socio> socios = new ArrayList<>();
     private final Set<Integer> idsSocios = new HashSet<>();
 
@@ -23,6 +27,7 @@ public class SocioManager {
             System.out.println("5. Dar de Baja");
             System.out.println("6. Mostrar todos los socios");
             System.out.println("7. rutinas");
+            System.out.println("8. Subir apto médico");
             System.out.println("0. Volver");
             System.out.print("Opción: ");
             opcion = scanner.nextInt();
@@ -37,6 +42,19 @@ public class SocioManager {
                 case 6 -> mostrarTodosLosSocios();
                 case 0 -> System.out.println("Volviendo al menú principal...");
                 case 7 -> configurarEntrenamiento(scanner);
+                case 8 -> {
+                    System.out.print("Ingrese el ID del socio: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine(); // limpiar buffer
+
+                    Socio socio = buscarSocioPorId(id);
+                    if (socio == null) {
+                        System.out.println("⚠️ Socio no encontrado.");
+                    } else {
+                        socio.subirAptoMedico();
+                    }
+                }
+
                 default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
@@ -183,4 +201,53 @@ public class SocioManager {
         }
     }
 
+
+    public List<Socio> getListaSocios() {
+        return List.of();
+    }
+
+    private void subirAptoMedicoDesdeMenu(Scanner scanner) {
+        System.out.print("Ingrese el ID del socio: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // limpiar buffer
+
+        Socio socio = buscarSocioPorId(id);
+        if (socio == null) {
+            System.out.println("⚠️ Socio no encontrado.");
+            return;
+        }
+
+        if (socio.tieneAptoMedico()) {
+            System.out.println("ℹ️ El socio ya tiene un apto médico asignado: " +
+                    socio.getAptoMedico().obtenerNombreArchivo());
+            System.out.print("¿Desea reemplazarlo? (s/n): ");
+            String respuesta = scanner.nextLine();
+            if (!respuesta.equalsIgnoreCase("s")) {
+                System.out.println("⏹️ Subida cancelada.");
+                return;
+            }
+        }
+
+        System.out.print("Ingrese el nombre del archivo (ej: apto_juan.pdf): ");
+        String nombreArchivo = scanner.nextLine();
+
+        System.out.print("Ingrese el contenido del apto médico: ");
+        String contenidoTexto = scanner.nextLine();
+        byte[] contenido = contenidoTexto.getBytes();
+
+        AptoMedico apto = new AptoMedico(nombreArchivo, contenido, "application/pdf");
+        socio.asignarAptoMedico(apto);
+
+        GestorArchivos gestor = new GestorArchivos("archivos/apto_medico");
+        gestor.subirArchivo(apto);
+
+        System.out.println("✅ Apto médico subido correctamente para " + socio.getNombreCompleto());
+    }
+
+    public Socio buscarSocioPorId(int id) {
+        for (Socio s : listaSocios) {
+            if (s.getIdSocio() == id) return s;
+        }
+        return null;
+    }
 }
