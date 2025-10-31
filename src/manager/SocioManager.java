@@ -48,7 +48,7 @@ public class SocioManager {
 
                     Socio socio = buscarPorId(id);
                     if (socio == null) {
-                        System.out.println("⚠️ Socio no encontrado.");
+                        System.out.println("Socio no encontrado.");
                     } else {
                         socio.subirAptoMedico();
                     }
@@ -206,9 +206,9 @@ public class SocioManager {
 
     public void mostrarSociosDisponibles() {
         if (socios.isEmpty()) {
-            System.out.println("⚠️ No hay socios registrados.");
+            System.out.println("No hay socios registrados.");
         } else {
-            System.out.println("📋 Socios disponibles:");
+            System.out.println("Socios disponibles:");
             for (Socio s : socios) {
                 System.out.println("ID: " + s.getIdSocio() + " - " + s.getNombreCompleto());
             }
@@ -224,17 +224,17 @@ public class SocioManager {
 
         Socio socio = buscarPorId(id);
         if (socio == null) {
-            System.out.println("⚠️ Socio no encontrado.");
+            System.out.println("Socio no encontrado.");
             return;
         }
 
         if (socio.tieneAptoMedico()) {
-            System.out.println("ℹ️ El socio ya tiene un apto médico asignado: " +
+            System.out.println("El socio ya tiene un apto médico asignado: " +
                     socio.getAptoMedico().obtenerNombreArchivo());
             System.out.print("¿Desea reemplazarlo? (s/n): ");
             String respuesta = scanner.nextLine();
             if (!respuesta.equalsIgnoreCase("s")) {
-                System.out.println("⏹️ Subida cancelada.");
+                System.out.println("Subida cancelada.");
                 return;
             }
         }
@@ -252,7 +252,7 @@ public class SocioManager {
         GestorArchivos gestor = new GestorArchivos("archivos/apto_medico");
         gestor.subirArchivo(apto);
 
-        System.out.println("✅ Apto médico subido correctamente para " + socio.getNombreCompleto());
+        System.out.println("Apto médico subido correctamente para " + socio.getNombreCompleto());
     }
     private void subirAptoMedicoDesdeMenu(Scanner scanner) {
         System.out.print("Ingrese el ID del socio: ");
@@ -262,17 +262,17 @@ public class SocioManager {
         Socio socio = buscarPorId(id);
 
         if (socio == null) {
-            System.out.println("⚠️ Socio no encontrado.");
+            System.out.println("Socio no encontrado.");
             return;
         }
 
         if (socio.tieneAptoMedico()) {
-            System.out.println("ℹ️ El socio ya tiene un apto médico asignado: " +
+            System.out.println("El socio ya tiene un apto médico asignado: " +
                     socio.getAptoMedico().obtenerNombreArchivo());
             System.out.print("¿Desea reemplazarlo? (s/n): ");
             String respuesta = scanner.nextLine();
             if (!respuesta.equalsIgnoreCase("s")) {
-                System.out.println("⏹️ Subida cancelada.");
+                System.out.println("Subida cancelada.");
                 return;
             }
         }
@@ -290,7 +290,7 @@ public class SocioManager {
         GestorArchivos gestor = new GestorArchivos("archivos/apto_medico");
         gestor.subirArchivo(apto);
 
-        System.out.println("✅ Apto médico subido correctamente para " + socio.getNombreCompleto());
+        System.out.println("Apto médico subido correctamente para " + socio.getNombreCompleto());
     }
 
 }
