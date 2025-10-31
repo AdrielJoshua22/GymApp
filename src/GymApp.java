@@ -1,7 +1,6 @@
 import datos.GymListaDatos;
 import manager.*;
 import model.Socio;
-import servicios.GestorArchivos;
 
 import java.util.List;
 import java.util.Scanner;
@@ -45,7 +44,7 @@ public class GymApp {
                 case 3 -> pagosManager.mostrarMenu(scanner);
                 case 4 -> EntrenadorManager.mostrarMenu(scanner);
                 case 5 -> ClaseManager.mostrarMenu(scanner);
-                case 6 -> GestorArchivos.subirArchivoMedicoDesdeConsola(socioManager.getListaSocios());
+                case 6 -> socioManager.gestionarSubidaAptoMedico(scanner);
                 case 0 -> System.out.println("¡Gracias por usar GymApp!");
                 default -> System.out.println("Opción inválida.");
             }

@@ -200,11 +200,60 @@ public class SocioManager {
         }
     }
 
-
     public List<Socio> getListaSocios() {
-        return List.of();
+        return socios;
     }
 
+    public void mostrarSociosDisponibles() {
+        if (socios.isEmpty()) {
+            System.out.println("⚠️ No hay socios registrados.");
+        } else {
+            System.out.println("📋 Socios disponibles:");
+            for (Socio s : socios) {
+                System.out.println("ID: " + s.getIdSocio() + " - " + s.getNombreCompleto());
+            }
+        }
+    }
+
+    public void gestionarSubidaAptoMedico(Scanner scanner) {
+        mostrarSociosDisponibles();
+
+        System.out.print("Ingrese el ID del socio: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // limpiar buffer
+
+        Socio socio = buscarPorId(id);
+        if (socio == null) {
+            System.out.println("⚠️ Socio no encontrado.");
+            return;
+        }
+
+        if (socio.tieneAptoMedico()) {
+            System.out.println("ℹ️ El socio ya tiene un apto médico asignado: " +
+                    socio.getAptoMedico().obtenerNombreArchivo());
+            System.out.print("¿Desea reemplazarlo? (s/n): ");
+            String respuesta = scanner.nextLine();
+            if (!respuesta.equalsIgnoreCase("s")) {
+                System.out.println("⏹️ Subida cancelada.");
+                return;
+            }
+        }
+
+        System.out.print("Ingrese el nombre del archivo (ej: apto_juan.pdf): ");
+        String nombreArchivo = scanner.nextLine();
+
+        System.out.print("Ingrese el contenido del apto médico: ");
+        String contenidoTexto = scanner.nextLine();
+        byte[] contenido = contenidoTexto.getBytes();
+
+        AptoMedico apto = new AptoMedico(nombreArchivo, contenido, "application/pdf");
+        socio.asignarAptoMedico(apto);
+
+        GestorArchivos gestor = new GestorArchivos("archivos/apto_medico");
+        gestor.subirArchivo(apto);
+
+        System.out.println("✅ Apto médico subido correctamente para " + socio.getNombreCompleto());
+    }
     private void subirAptoMedicoDesdeMenu(Scanner scanner) {
         System.out.print("Ingrese el ID del socio: ");
         int id = scanner.nextInt();

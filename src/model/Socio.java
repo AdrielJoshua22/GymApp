@@ -77,11 +77,14 @@ public class Socio extends Persona {
             estadoApto = "Pendiente a subir";
         }
 
-        System.out.println("Socio: " + getNombreCompleto() +
+        System.out.println("ID: " + id +
+                " | Socio: " + getNombreCompleto() +
                 " | DNI: " + dni +
                 " | Edad: " + edad +
                 " | Estado: " + (activo ? "Activo" : "Inactivo") +
                 " | Apto médico: " + estadoApto);
+
+
     }
 
     @Override
