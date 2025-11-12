@@ -1,5 +1,6 @@
 package manager;
 
+
 import model.AptoMedico;
 import model.NivelDificultad;
 import model.Objetivo;
@@ -41,20 +42,9 @@ public class SocioManager {
                 case 6 -> mostrarTodosLosSocios();
                 case 0 -> System.out.println("Volviendo al menú principal...");
                 case 7 -> configurarEntrenamiento(scanner);
-                case 8 -> {
-                    System.out.print("Ingrese el ID del socio: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine(); // limpiar buffer
+                case 8 -> gestionarSubidaAptoMedico(scanner);
 
-                    Socio socio = buscarPorId(id);
-                    if (socio == null) {
-                        System.out.println("Socio no encontrado.");
-                    } else {
-                        socio.subirAptoMedico();
-                    }
-                }
 
-                default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 0);
     }

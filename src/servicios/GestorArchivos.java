@@ -97,7 +97,8 @@ public class GestorArchivos {
             fos.write(archivo.obtenerContenido());
             System.out.println("Archivo subido correctamente: " + rutaCompleta.toAbsolutePath());
         } catch (IOException e) {
-            System.err.println("Error al subir el archivo: " + e.getMessage());
+            System.err.println("E" +
+                    "Error al subir el archivo: " + e.getMessage());
         }
     }
 }
