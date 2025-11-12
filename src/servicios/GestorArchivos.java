@@ -28,17 +28,17 @@ public class GestorArchivos {
 
         Socio socio = buscarSocioPorId(listaSocios, id);
         if (socio == null) {
-            System.out.println("⚠️ Socio no encontrado.");
+            System.out.println("Socio no encontrado.");
             return;
         }
 
         if (socio.tieneAptoMedico()) {
-            System.out.println("ℹ️ El socio ya tiene un apto médico asignado: " +
+            System.out.println("El socio ya tiene un apto médico asignado: " +
                     socio.getAptoMedico().obtenerNombreArchivo());
             System.out.print("¿Desea reemplazarlo? (s/n): ");
             String respuesta = scanner.nextLine();
             if (!respuesta.equalsIgnoreCase("s")) {
-                System.out.println("⏹️ Subida cancelada.");
+                System.out.println("Subida cancelada.");
                 return;
             }
         }
@@ -56,7 +56,7 @@ public class GestorArchivos {
         GestorArchivos gestor = new GestorArchivos("archivos/apto_medico");
         gestor.subirArchivo(apto);
 
-        System.out.println("✅ Apto médico subido correctamente para " + socio.getNombreCompleto());
+        System.out.println("Apto médico subido correctamente para " + socio.getNombreCompleto());
     }
 
     private static Socio buscarSocioPorId(List<Socio> listaSocios, int id) {
@@ -73,9 +73,9 @@ public class GestorArchivos {
         if (!Files.exists(carpeta)) {
             try {
                 Files.createDirectories(carpeta);
-                System.out.println("📁 Carpeta creada: " + carpeta.toAbsolutePath());
+                System.out.println("Carpeta creada: " + carpeta.toAbsolutePath());
             } catch (IOException e) {
-                System.err.println("❌ No se pudo crear la carpeta: " + e.getMessage());
+                System.err.println("No se pudo crear la carpeta: " + e.getMessage());
             }
         }
     }
@@ -85,19 +85,19 @@ public class GestorArchivos {
 
         // Validar si el archivo ya existe
         if (Files.exists(rutaCompleta)) {
-            System.out.print("⚠️ El archivo ya existe. ¿Desea reemplazarlo? (s/n): ");
+            System.out.print("El archivo ya existe. ¿Desea reemplazarlo? (s/n): ");
             String respuesta = new Scanner(System.in).nextLine();
             if (!respuesta.equalsIgnoreCase("s")) {
-                System.out.println("⏹️ Subida cancelada.");
+                System.out.println("Subida cancelada.");
                 return;
             }
         }
 
         try (FileOutputStream fos = new FileOutputStream(rutaCompleta.toFile())) {
             fos.write(archivo.obtenerContenido());
-            System.out.println("✅ Archivo subido correctamente: " + rutaCompleta.toAbsolutePath());
+            System.out.println("Archivo subido correctamente: " + rutaCompleta.toAbsolutePath());
         } catch (IOException e) {
-            System.err.println("❌ Error al subir el archivo: " + e.getMessage());
+            System.err.println("Error al subir el archivo: " + e.getMessage());
         }
     }
 }
