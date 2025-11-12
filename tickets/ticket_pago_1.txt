@@ -1,10 +1,10 @@
 === GYMAPP - TICKET DE PAGO ===
-Fecha: 30/10/2025
-Socio: Martín Perez
-DNI: 27889707
+Fecha: 01/11/2025
+Socio: Lucía Gomez
+DNI: 28555789
 Estado del socio: Activo
 ID Pago: 1
-Monto: $5000
+Monto: $6500
 Estado del pago: Activo
-Comprobante Nº: 2384
+Comprobante Nº: 344797
 ===============================
